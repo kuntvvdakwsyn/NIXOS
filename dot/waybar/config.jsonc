@@ -1,0 +1,26 @@
+{
+    "include": [
+        "~/.config/waybar/modules.jsonc"
+    ],
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+
+    "modules-left": [
+    "custom/my-power",
+    "hyprland/workspaces",
+    "hyprland/window",
+],
+"modules-center": [
+    "clock",
+
+],
+
+"modules-right": [
+    "network",
+    "pulseaudio",
+    "battery", 
+    "memory"
+]
+}
