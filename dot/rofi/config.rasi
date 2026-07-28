@@ -1,0 +1,35 @@
+configuration {
+    modi:                       "drun,run,window";
+    show-icons:                 true;
+    display-drun:               "";
+    drun-display-format:        "{name}";
+    matching:                   "fuzzy";
+    case-sensitive:             false;
+
+    /* terminal apps launched via drun/run */
+    terminal:                   "foot";
+
+    /* arrow-key navigation (mirrors key_up/down/left/right + submit)
+       NOTE: Left/Right are bound by default to kb-move-char-back/
+       kb-move-char-forward (moving the text cursor in the search box),
+       so we free them there first, keeping Control+b/Control+f as the
+       cursor-movement fallback, to avoid "already bound" conflicts. */
+    kb-row-up:                  "Up";
+    kb-row-down:                "Down";
+    kb-row-left:                "Left";
+    kb-row-right:               "Right";
+    kb-move-char-back:          "Control+b";
+    kb-move-char-forward:       "Control+f";
+    kb-accept-entry:            "Return";
+
+    /* Tab is bound by default to kb-element-next (cycling multi-select
+       elements). Clear that first so it's free for kb-row-tab. */
+    kb-element-next:            "";
+    kb-row-tab:                 "Tab";
+    /* Note: rofi has no built-in "reverse tab" binding like wofi's
+       key_backward (Shift-ISO_Left_Tab). Closest equivalents are
+       kb-row-select (cycle rows) or kb-mode-previous (Shift+Left,
+       switch modi) — pick whichever matches what you used it for. */
+}
+
+@theme "/home/lain/.config/rofi/style.rasi"

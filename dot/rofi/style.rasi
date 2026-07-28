@@ -1,0 +1,91 @@
+* {
+    font: "JetBrainsMono Nerd Font Bold 16";
+
+    bg:     #24283b;
+    bg-alt: #24283b;
+    fg:     #c0caf5;
+    sel:    #414868;
+    border: #414868;
+}
+
+window {
+    location:       center;
+    anchor:         center;
+    width:          700px;
+
+    background-color: @bg;
+    border:            2px;
+    border-color:      @border;
+    border-radius:      5px;
+}
+
+mainbox {
+    background-color: @bg;
+    margin:            5px;
+    spacing:           5px;
+    children:          [ "inputbar", "listview" ];
+}
+
+/* wofi #input -> inputbar */
+inputbar {
+    background-color: @bg;
+    text-color:        @fg;
+    border:            1px;
+    border-color:      @bg-alt;
+    padding:           5px;
+    children:          [ "entry" ];
+}
+
+entry {
+    background-color: @bg;
+    text-color:        @fg;
+    placeholder:       "";
+    placeholder-color: @fg;
+}
+
+/* wofi #inner-box / #outer-box -> listview */
+listview {
+    background-color: @bg;
+    border:            0px;
+    lines:             8;
+    columns:           2;
+    dynamic-lines:     false;
+    spacing:           5px;
+    scrollbar:         true;
+    fixed-height:      true;
+}
+
+/* wofi #scroll -> scrollbar */
+scrollbar {
+    background-color: @bg;
+    handle-color:      @border;
+    handle-width:      6px;
+    border:            0px;
+}
+
+/* wofi #text -> element / element-text */
+element {
+    background-color: @bg;
+    text-color:        @fg;
+    padding:           5px;
+    border:            0px;
+    orientation:       horizontal;
+}
+
+element-icon {
+    size:              36px;
+    background-color: inherit;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:        inherit;
+    vertical-align:    0.5;
+}
+
+/* wofi #entry:selected / #text:selected -> element selected.normal */
+element selected.normal {
+    background-color: @sel;
+    text-color:        @fg;
+    font:              "JetBrainsMono Nerd Font 16"; /* not bold, mirrors font-weight: normal */
+}
