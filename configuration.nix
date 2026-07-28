@@ -94,7 +94,6 @@
             ripgrep
             cliphist
             rust-analyzer
-            foot
             fastfetch
             unimatrix
             tty-clock
@@ -131,13 +130,11 @@
             kdePackages.dolphin    
             firefox
             brave
-            hyprpaper
             telegram-desktop
             viber
             (discord.override { withOpenASAR = true; })
             mpv
             vscode    
-            waybar
             rofi
             hyprlock
             eww
