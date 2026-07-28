@@ -67,7 +67,7 @@
         dedicatedServer.openFirewall = true;
     };
 
-    users.users.nixa = {
+    users.users.lain = {
         isNormalUser = true;
         extraGroups = [ "wheel" "networkmanager" "video" "audio" "vboxusers" "input" ];
         shell = pkgs.zsh;  
