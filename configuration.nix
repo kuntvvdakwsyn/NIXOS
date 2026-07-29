@@ -1,4 +1,4 @@
-{ config, pkgs, lib, pkgs-unstable, ... }:
+{ config, pkgs, lib, pkgs-unstble, ... }:
 
 {
     imports = [
@@ -8,7 +8,16 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    zramSwap.enable = true;
+    zramSwap = {
+        enable = true;
+        algorithm = "zstd";
+        memoryPercent = 50;
+    };
+
+    swapDevices = [ {
+        device = "/var/lib/swapfile";
+        size = 4096; 
+    } ];
 
     security.sudo.extraConfig = ''
         Defaults env_keep+="HOME"
@@ -29,7 +38,13 @@
 
     programs.gamescope.enable = true;
 
+    virtualisation.virtualbox.host.enable = true;
+    virtualisation.virtualbox.host.enableExtensionPack = true;
+    users.extraGroups.vboxusers.members = [ "lain" ];
+
+
     programs.hyprland.enable = true;
+
 
     nixpkgs.config.allowUnfree = true; 
 
@@ -61,6 +76,9 @@
             nvidiaBusId = "PCI:1:0:0";
         };
     };
+
+    services.flatpak.enable = true;
+
     programs.steam = {
         enable = true;
         remotePlay.openFirewall = true;
@@ -87,6 +105,8 @@
         config.common.default = "*";
     };
 
+    services.usbmuxd.enable = true;
+
     programs.yazi.enable = true;
 
     environment.systemPackages = with pkgs; [
@@ -94,7 +114,11 @@
             ripgrep
             cliphist
             rust-analyzer
+            foot
             fastfetch
+            cmatrix
+            pipes
+            cbonsai
             unimatrix
             tty-clock
             cava
@@ -103,8 +127,11 @@
             bat
             slurp
             lutris
+            usbutils
             wineWowPackages.staging
             winetricks
+            libimobiledevice
+            idevicerestore
             vulkan-tools
             vulkan-loader
             grim
@@ -112,29 +139,40 @@
             jq
             btop
             obsidian
+            pinta
             vim
             wget
             git
             gcc
+            neovim
+            nodejs
             sfml_2
             gnumake
+            unzip
+            unrar
+            rar
             python3
             python3Packages.pip
             audacious
+            tree
             pavucontrol
             zsh-autosuggestions
             zsh-syntax-highlighting
+            easyeffects
             brightnessctl
             pulseaudio
             swaynotificationcenter
             kdePackages.dolphin    
             firefox
+            nmap
             brave
+            hyprpaper
             telegram-desktop
             viber
             (discord.override { withOpenASAR = true; })
             mpv
             vscode    
+            waybar
             rofi
             hyprlock
             eww
@@ -148,8 +186,6 @@
             osu-lazer-bin
             hydralauncher
             qbittorrent
-            ] ++ [
-            pkgs-unstable.fzf
             ];
 
     environment.pathsToLink = [ "/include" ];
