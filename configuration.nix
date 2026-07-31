@@ -136,6 +136,10 @@
             vulkan-loader
             grim
             cliphist
+foot 
+        waybar
+        hyprpaper
+        rofi
             jq
             btop
             obsidian
